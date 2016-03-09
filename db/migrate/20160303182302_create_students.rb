@@ -9,7 +9,7 @@ class CreateStudents < ActiveRecord::Migration
       t.text :address
       t.string :fathers_name
       t.integer :blood_type
-      t.integer :emergency_contact, :limit => 10
+      t.string :emergency_contact
 
       t.timestamps null: false
     end

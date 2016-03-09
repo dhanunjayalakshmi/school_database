@@ -9,7 +9,7 @@ class HousesController < ApplicationController
 
   def update
     @house = House.find(params[:id])
-    @house.update_attributes(house)
+    @house.update_attributes(house_params)
     redirect_to houses_path
   end
 

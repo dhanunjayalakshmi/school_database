@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 20160307150733) do
     t.text     "address"
     t.string   "fathers_name"
     t.integer  "blood_type"
-    t.integer  "emergency_contact", limit: 10
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "emergency_contact"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "roll_no"
   end
 

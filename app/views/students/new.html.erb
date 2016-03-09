@@ -1,17 +1,18 @@
 <div class="container">
   <h1>Add new Student</h1>
-  <%= simple_form_for @student do |f|%>
-  <%= f.input :name, required: true %>
-  <%= f.input :section_id, collection: Section.all, label_method: :display_name, value_method: :id %>
-  <%= f.input :house_id, collection: House.all, label_method: :name, value_method: :id %>
-  <%= f.input :address, required: true %>
-  <%= f.input :gender, collection: Student::Gender.all, label_method: :label, value_method: :code, required: true %>
-  <%= f.input :dob, as: :date, start_year: Date.today.year - 50,
-  end_year: Date.today.year - 2, discard_day: false, order: [:day, :month, :year], label: "Date of Birth", required: true %>
-  <%= f.input :fathers_name, label: "Father's Name", required: true %>
-  <%= f.input :emergency_contact, label: "Emergency Contact", required: true %>
-  <%= f.input :blood_type, collection: Student::BloodType.all, label_method: :label, label: "Blood Type", value_method: :code, required: true %>
-  <%= f.submit "Add New Student", class: "btn btn-primary" %>
-  <%= link_to "Cancel", :back, class: "btn btn-primary"%>
+  <%= simple_form_for @student, wrapper: :horizontal_form, html: {class: "form-horizontal"} do |f|%>
+    <%= f.input :roll_no, required: true %>
+    <%= f.input :name, required: true %>
+    <%= f.input :section_id, collection: Section.all, include_blank: false, label_method: :display_name, value_method: :id %>
+    <%= f.input :house_id, collection: House.all, include_blank: false, label_method: :name, value_method: :id %>
+    <%= f.input :address, required: true %>
+    <%= f.input :gender, collection: Student::Gender.all, include_blank: false, label_method: :label, value_method: :code, required: true %>
+    <%= f.input :dob, as: :date, html5: true %>
+    <%= f.input :fathers_name, label: "Father's Name", required: true %>
+    <%= f.input :emergency_contact, label: "Emergency Contact", required: true,
+            :input_html => { :maxlength => 14, :"data-mask" => "999-999-9999" } %>
+    <%= f.input :blood_type, collection: Student::BloodType.all, include_blank: false, label_method: :label, label: "Blood Type", value_method: :code, required: true %>
+    <%= f.submit "Add New Student", class: "btn btn-primary col-sm-offset-3" %>
+    <!-- <%= link_to "Cancel", :back, class: "btn btn-primary"%> -->
   <% end %>
 </div>

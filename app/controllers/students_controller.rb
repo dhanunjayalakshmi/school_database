@@ -33,6 +33,7 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find(params[:id])
     @student.update_attributes(student_params)
+    #debugger
     redirect_to students_path
   end
 
@@ -44,6 +45,6 @@ class StudentsController < ApplicationController
 
 private
 def student_params
-  params.require(:student).permit(:name, :address, :fathers_name, :emergency_contact, :blood_type, :gender, :dob, :section_id, :house_id)
+  params.require(:student).permit(:roll_no, :name, :address, :fathers_name, :emergency_contact, :blood_type, :gender, :dob, :section_id, :house_id)
 end
 end

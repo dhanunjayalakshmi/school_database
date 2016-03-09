@@ -18,6 +18,15 @@ module Gender
   MALE = 1
   FEMALE = 2
 
+  def self.label(code)
+      if code == 1
+        return "Male"
+      else
+        return "Female"
+      end
+    end
+
+
   def self.all
     [
       OpenStruct.new(code: MALE, label: "Male"),
@@ -36,6 +45,17 @@ module BloodType
   AB_PLUS = 7
   AB_NEG = 8
 
+  def self.label(code)
+    return "O+" if code == 1
+    return "O-" if code == 2
+    return "A+" if code == 3
+    return "A-" if code == 4
+    return "B+" if code == 5
+    return "B-" if code == 6
+    return "AB+" if code == 7
+    return "AB-" if code == 8
+  end
+
   def self.all
     [
       OpenStruct.new(code: O_PLUS, label: "O+"),
@@ -49,6 +69,4 @@ module BloodType
     ]
   end
 end
-
-
 end

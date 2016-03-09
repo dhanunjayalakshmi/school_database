@@ -1,8 +1,8 @@
 <div class="container">
   <h1>Add new Section</h1>
-  <%= simple_form_for [@standard, @section] do |f|%>
+  <%= simple_form_for [@standard, @section], wrapper: :horizontal_form, html: {class: "form-horizontal"} do |f|%>
   <%= f.input :name, required: true %>
-  <%= f.submit "Add New Section", class: "btn btn-default" %>
-  <% end %>
+  <%= f.submit "Add New Section", class: "btn btn-default col-sm-offset-3" %>
   <%= link_to "Cancel", standard_sections_path, class: "btn btn-primary" %>
+  <% end %>
 </div>

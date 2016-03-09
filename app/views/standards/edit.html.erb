@@ -1,8 +1,8 @@
 <div class="container">
   <h1>Edit your standard name</h1>
-  <%= simple_form_for @standard do |f| %>
+  <%= simple_form_for @standard, wrapper: :horizontal_form, html: {class: "form-horizontal"} do |f| %>
   <%= f.input :name %>
-  <%= f.submit "Change Name", class: "btn btn-primary" %>
+  <%= f.submit "Change Name", class: "btn btn-primary col-sm-offset-3" %>
   <%= link_to "Cancel", :back, class: "btn btn-primary" %>
   <% end %>
 </div>
