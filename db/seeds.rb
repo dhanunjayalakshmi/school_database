@@ -58,7 +58,6 @@ def seed_students(section, house, roll_no)
     student.blood_type = Student::BloodType.all.sample.code
     student.address = "#{Faker::Address.street_address}, #{Faker::Address.city}-#{Faker::Address.zip}"
     student.house = house
-    # debugger
   end
   print "."
 end

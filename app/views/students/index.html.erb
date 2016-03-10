@@ -26,7 +26,7 @@
         <td><%= student.emergency_contact %></td>
         <td><%= student.dob %></td>
         <td><%= Student::BloodType::label(student.blood_type) %></td>
-        <td><%= student.section.standard.name+"-"+student.section.name %></td>
+        <td><%= student.section.standard.name+ " - " +student.section.name %></td>
         <td><%= student.house.name %></td>
         <td><%= link_to "Delete", student_path(student), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %></td>
         <td><%= link_to "Edit", edit_student_path(student), class: "btn btn-default" %></td>
@@ -34,10 +34,10 @@
       <% end %>
     </tbody>
   </table>
-  <% if params[:section_id] || params[:house_id] %>
-    <%= link_to "Add New Student", new_student_path, class: "btn btn-primary" %>
-    <%= link_to "Back", :back, class: "btn btn-primary" %>
+  <% if @section %>
+    <%= link_to "Add New Student", new_student_path(section_id: @section.id), class: "btn btn-primary" %>
   <% else %>
     <%= link_to "Add New Student", new_student_path, class: "btn btn-primary" %>
   <% end %>
+  <%= link_to "Back", :back, class: "btn btn-primary" %>
 </div>

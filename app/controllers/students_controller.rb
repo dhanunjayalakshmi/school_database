@@ -2,24 +2,30 @@ class StudentsController < ApplicationController
   def index
     if params[:section_id]
       @section = Section.find(params[:section_id])
-      @students = @section.students.all
+      @students = @section.students
     elsif params[:house_id]
       @house = House.find(params[:house_id])
-      @students = @house.students.all
+      @students = @house.students
     else
       @students = Student.all
     end
   end
 
   def new
-    @student = Student.new
+    if params[:section_id]
+      @section = Section.find(params[:section_id])
+      @student = @section.students.new
+    else
+      @student = Student.new
+    end
   end
 
   def create
     @student = Student.new(student_params)
+    @section_id = @student.section_id
     if @student.save
       flash[:success] = "Successfully added a student."
-      redirect_to students_path
+      redirect_to students_path(section_id: @section_id)
     else
       flash[:error] = "Oops! Looks like you forgot to fill in a few fields."
       render :new
@@ -32,15 +38,16 @@ class StudentsController < ApplicationController
 
   def update
     @student = Student.find(params[:id])
+    @section_id = @student.section_id
     @student.update_attributes(student_params)
-    #debugger
-    redirect_to students_path
+    redirect_to students_path(section_id: @section_id)
   end
 
   def destroy
     @student = Student.find(params[:id])
+    @section_id = @student.section_id
     @student.destroy!
-    redirect_to students_path
+    redirect_to students_path(section_id: @section_id)
   end
 
 private
